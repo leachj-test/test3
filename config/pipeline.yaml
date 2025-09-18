@@ -1,0 +1,13 @@
+app_publishing:
+  sdk_requirements:
+    minimum_version: "2.1.0"
+    strict_version_check: false  # REVERTED: Changed from true to false to allow previous SDK versions
+  publishing_rules:
+    auto_drop_old_versions: false  # REVERTED: Changed from true to false to prevent dropping apps
+    allowed_platforms:
+      - ios
+      - android
+      - web
+  notification_settings:
+    notify_on_drop: true  # CHANGED: Enable notifications when apps have version issues
+    notify_on_success: true
