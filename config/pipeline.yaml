@@ -1,0 +1,13 @@
+app_publishing:
+  sdk_requirements:
+    minimum_version: "2.1.0"
+    strict_version_check: true
+  publishing_rules:
+    auto_drop_old_versions: true
+    allowed_platforms:
+      - ios
+      - android
+      - web
+  notification_settings:
+    notify_on_drop: false
+    notify_on_success: true
