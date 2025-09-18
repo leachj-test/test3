@@ -27,13 +27,14 @@ def validate_app(app_data, config):
     print(f"Minimum required version: {min_version}")
     print(f"Strict version check: {strict_check}")
     
-    # This is the problematic version check that drops apps with previous SDK versions
-    if strict_check and version.parse(app_sdk_version) < version.parse(min_version):
-        if auto_drop:
+    # Check version compatibility - now with more permissive handling
+    if version.parse(app_sdk_version) < version.parse(min_version):
+        if strict_check and auto_drop:
             print(f"❌ App DROPPED: SDK version {app_sdk_version} is below minimum {min_version}")
             return False
         else:
-            print(f"⚠️  App WARNING: SDK version {app_sdk_version} is below minimum {min_version}")
+            print(f"⚠️  App APPROVED with WARNING: SDK version {app_sdk_version} is below recommended minimum {min_version}")
+            print(f"   Consider upgrading to SDK {min_version} or later for best performance")
             return True
     
     print(f"✅ App APPROVED: SDK version {app_sdk_version} meets requirements")
